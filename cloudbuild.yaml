@@ -1,6 +1,6 @@
 # Archivo: cloudbuild.yaml
 steps:
-  # 1. Construye la imagen Docker usando el Dockerfile
+  # 1. Construye la imagen Docker
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
@@ -10,7 +10,7 @@ steps:
         '.',
       ]
 
-  # 2. Sube la imagen Docker al registro de artefactos de Google
+  # 2. Sube la imagen Docker
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/insta-cloud-mvp:$SHORT_SHA']
 
@@ -21,16 +21,20 @@ steps:
       [
         'run',
         'deploy',
-        'insta-cloud-mvp', # Nombre de tu servicio en Cloud Run
+        'insta-cloud-mvp', 
         '--image',
         'gcr.io/$PROJECT_ID/insta-cloud-mvp:$SHORT_SHA',
         '--region',
-        'us-central1', # Cambia esto a la región que prefieras
+        'us-central1', 
         '--platform',
         'managed',
-        '--allow-unauthenticated', # ¡Importante! Permite que cualquiera acceda a tu app
+        '--allow-unauthenticated', 
       ]
 
 # Guardar la imagen en el registro
 images:
   - 'gcr.io/$PROJECT_ID/insta-cloud-mvp:$SHORT_SHA'
+
+# ¡ESTA ES LA LÍNEA NUEVA QUE SOLUCIONA EL ERROR!
+options:
+  logging: CLOUD_LOGGING_ONLY
