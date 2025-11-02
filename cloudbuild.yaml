@@ -24,7 +24,7 @@ steps:
         'insta-cloud-mvp', 
         '--image',
         'gcr.io/$PROJECT_ID/insta-cloud-mvp:$SHORT_SHA',
-        '--region',
+        '--region', 
         'us-central1', 
         '--platform',
         'managed',
@@ -34,7 +34,5 @@ steps:
 # Guardar la imagen en el registro
 images:
   - 'gcr.io/$PROJECT_ID/insta-cloud-mvp:$SHORT_SHA'
-
-# ¡ESTA ES LA LÍNEA NUEVA QUE SOLUCIONA EL ERROR!
 options:
   logging: CLOUD_LOGGING_ONLY
