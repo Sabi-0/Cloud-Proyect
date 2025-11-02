@@ -54,7 +54,6 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     blobStream.on('finish', async () => {
       // Hacer el archivo público (para que se vea en la web)
       // En un proyecto real, usarías URLs firmadas, pero esto es más simple para la demo y la CDN
-      await blob.makePublic();
       const publicUrl = `https://storage.googleapis.com/${bucketName}/${blobName}`;
 
       // Guardar la metadata en Firestore
