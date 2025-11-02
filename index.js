@@ -13,7 +13,7 @@ const firestore = new Firestore();
 const storage = new Storage();
 
 // Nombre de tu bucket en Cloud Storage
-const bucketName = 'bucket-insta-cloud-felipe-2025'; // <--- ¡REEMPLAZA ESTO!
+const bucketName = 'bucket-insta-cloud-sami-2025';
 const bucket = storage.bucket(bucketName);
 
 // Configuración de Multer para manejar la subida de archivos en memoria
